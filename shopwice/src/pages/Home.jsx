@@ -1,21 +1,18 @@
 import React from 'react'
-import background from '../assets/background.jpg'
+import Submenu from '../components/Submenu.jsx'
+import Footer from '../components/Footer.jsx'
+import Navbar from '../components/Navbar.jsx'
+
 
 function Home() {
   return (
-    <div className="relative w-screen min-h-screen overflow-hidden">
-      
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: `url(${background})` }}
-        aria-hidden="true"
-      />
-
-      {/* Foreground content */}
-      <main className="relative z-10 flex items-center justify-center flex-col text-white p-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-        <h1 className="text-4xl font-bold">Welcome to Shopwice</h1>
-        <p className="mt-2 text-lg">Discover products, offers and more.</p>
-      </main>
+    <div className='bg-gradient-to-l from-red-500 to-blue-500'>
+      <Navbar />
+      <div>
+        to be added....
+      </div>
+      <Submenu />
+      <Footer />
     </div>
   )
 }
