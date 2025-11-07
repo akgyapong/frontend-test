@@ -15,10 +15,13 @@ function Login() {
   const [signupPassword, setSignupPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signupError, setSignupError] = useState('')
+  // show/hide password toggles
+  const [showSignupPasswords, setShowSignupPasswords] = useState(false)
   // Signin controlled fields and errors (single identifier field: email or phone)
   const [signinIdentifier, setSigninIdentifier] = useState('')
   const [signinPassword, setSigninPassword] = useState('')
   const [signinError, setSigninError] = useState('')
+  const [showSigninPassword, setShowSigninPassword] = useState(false)
 
   // Render the login page
   return (
@@ -93,32 +96,38 @@ function Login() {
                 }}>
                   {/* Full name input with floating label using peer */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="text" id="fullname" value={fullName} onChange={e => setFullName(e.target.value)} />
-                    <label htmlFor="fullname" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Full Name</label>
+                    <label htmlFor="fullname" className="sr-only">Full Name</label>
+                    <input placeholder="Full Name" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="text" id="fullname" value={fullName} onChange={e => setFullName(e.target.value)} />
                   </div>
 
                   {/* Phone input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="tel" id="phone" value={phone} onChange={e => setPhone(e.target.value)} />
-                    <label htmlFor="phone" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Phone Number</label>
+                    <label htmlFor="phone" className="sr-only">Phone Number</label>
+                    <input placeholder="Phone Number" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="tel" id="phone" value={phone} onChange={e => setPhone(e.target.value)} />
                   </div>
 
                   {/* Email input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="email" id="signupEmail" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} />
-                    <label htmlFor="signupEmail" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Email address</label>
+                    <label htmlFor="signupEmail" className="sr-only">Email address</label>
+                    <input placeholder="Email address" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="email" id="signupEmail" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} />
                   </div>
 
                   {/* Password input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="password" id="password" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} />
-                    <label htmlFor="password" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Password</label>
+                    <label htmlFor="password" className="sr-only">Password</label>
+                    <input placeholder="Password" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type={showSignupPasswords ? 'text' : 'password'} id="password" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} />
                   </div>
 
                   {/* Confirm password input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="password" id="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-                    <label htmlFor="confirmPassword" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Confirm Password</label>
+                    <label htmlFor="confirmPassword" className="sr-only">Confirm Password</label>
+                    <input placeholder="Confirm Password" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type={showSignupPasswords ? 'text' : 'password'} id="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+                  </div>
+
+                  {/* Show password checkbox (signup) */}
+                  <div className="flex items-center gap-2">
+                    <input id="showSignupPassword" type="checkbox" className="w-4 h-4" checked={showSignupPasswords} onChange={e => setShowSignupPasswords(e.target.checked)} />
+                    <label htmlFor="showSignupPassword" className="text-sm text-gray-600">Show password</label>
                   </div>
 
                   {signupError && <div className="text-sm text-red-600">{signupError}</div>}
@@ -170,14 +179,20 @@ function Login() {
                 }}>
                   {/* Email or Phone input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="text" id="signinIdentifier" value={signinIdentifier} onChange={e => setSigninIdentifier(e.target.value)} />
-                    <label htmlFor="signinIdentifier" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Email or Phone</label>
+                    <label htmlFor="signinIdentifier" className="sr-only">Email or Phone</label>
+                    <input placeholder="Email or Phone" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="text" id="signinIdentifier" value={signinIdentifier} onChange={e => setSigninIdentifier(e.target.value)} />
                   </div>
 
                   {/* Password input */}
                   <div className="relative">
-                    <input placeholder=" " className="peer block w-full border border-gray-300 rounded-2xl h-12 px-4 pt-4 placeholder-transparent focus:outline-none focus:border-sky-600" type="password" id="signinPassword" value={signinPassword} onChange={e => setSigninPassword(e.target.value)} />
-                    <label htmlFor="signinPassword" className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm bg-white px-1">Password</label>
+                    <label htmlFor="signinPassword" className="sr-only">Password</label>
+                    <input placeholder="Password" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type={showSigninPassword ? 'text' : 'password'} id="signinPassword" value={signinPassword} onChange={e => setSigninPassword(e.target.value)} />
+                  </div>
+
+                  {/* Show password checkbox (signin) */}
+                  <div className="flex items-center gap-2">
+                    <input id="showSigninPassword" type="checkbox" className="w-4 h-4" checked={showSigninPassword} onChange={e => setShowSigninPassword(e.target.checked)} />
+                    <label htmlFor="showSigninPassword" className="text-sm text-gray-600">Show password</label>
                   </div>
 
                   {signinError && <div className="text-sm text-red-600">{signinError}</div>}
