@@ -42,8 +42,8 @@ function Navbar() {
         <Link to="/"><button className='bg-orange-900  transition duration-200 p-2 w-screen text-white cursor-pointer'>Home Appliances</button></Link>
         <Link to="/"><button className='bg-gray-50 p-2 w-screen text-orange-800 cursor-pointer'>Shoes</button></Link>
         <Link to="/"><button className='bg-orange-900  transition duration-200 p-2 w-screen text-white cursor-pointer'>Perfumes</button></Link>
-        <Link to="/contact"><button className='bg-gray-50 p-2 w-screen text-orange-800 cursor-pointer'>About Us</button></Link>
-        <Link to="/about"><button className='bg-orange-900  transition duration-200 p-2 w-screen text-white cursor-pointer'>Contact Us</button></Link>
+        <Link to="/about"><button className='bg-gray-50 p-2 w-screen text-orange-800 cursor-pointer'>About Us</button></Link>
+        <Link to="/contact"><button className='bg-orange-900  transition duration-200 p-2 w-screen text-white cursor-pointer'>Contact Us</button></Link>
     </div>
     </>
   )

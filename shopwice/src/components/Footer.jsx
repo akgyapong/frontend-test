@@ -9,10 +9,10 @@ function Footer() {
       <div className="flex justify-around mb-4">
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl">Quick Links</h1>
-          <Link to="/" className="hover:underline">Shop</Link>
+          <Link to="/listing" className="hover:underline">Shop</Link>
           <Link to="/" className="hover:underline">Home</Link>
           <Link to="/" className="hover:underline">About Us</Link>
-          <Link to="/" className="hover:underline">Contact Us</Link>
+          <Link to="/contact" className="hover:underline">Contact Us</Link>
         </div>
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl">Customer Service</h1>
