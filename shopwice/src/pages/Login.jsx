@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../assets/arrow-left.svg'
 import google from '../assets/Google Icon.svg'
@@ -11,7 +10,6 @@ function Login() {
   // Signup controlled fields and errors
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
-  const [signupEmail, setSignupEmail] = useState('')
   const [signupPassword, setSignupPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signupError, setSignupError] = useState('')
@@ -80,19 +78,54 @@ function Login() {
               {/* Conditional rendering of forms depending on `mode` */}
               {mode === 'signup' ? (
                 // SIGNUP FORM
-                <form className="flex flex-col gap-4" action="" onSubmit={(e)=>{
+                <form className="flex flex-col gap-4" action="" onSubmit={async (e)=>{
                   e.preventDefault()
                   // basic validation
                   setSignupError('')
                   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                   if (!fullName.trim()) { setSignupError('Please enter your full name.'); return }
                   if (!phone.trim()) { setSignupError('Please enter your phone number.'); return }
-                  if (!signupEmail.trim() || !emailRegex.test(signupEmail)) { setSignupError('Please enter a valid email address.'); return }
+
                   if (!signupPassword) { setSignupError('Please enter a password.'); return }
                   if (signupPassword !== confirmPassword) { setSignupError('Passwords do not match.'); return }
-                  // TODO: submit signup payload to API
+                  // Submit signup payload to API
                   setSignupError('')
-                  alert('Signup submitted (UI only)')
+                  try {
+                    const response = await fetch('/api/v1/auth/register/', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        full_name: fullName.trim(),
+                        phone_number: phone.trim(),
+                        password: signupPassword,
+                        confirm_password: confirmPassword,
+                      }),
+                    })
+                    const data = await response.json()
+                    if (data.success) {
+                      // Store tokens
+                      localStorage.setItem('access_token', data.tokens.access)
+                      localStorage.setItem('refresh_token', data.tokens.refresh)
+                      localStorage.setItem('user', JSON.stringify(data.data))
+                      // Handle success
+                      alert('Signup successful! Welcome to Shopwice.')
+                      window.location.href = '/'
+                    } else {
+                      // Handle errors
+                      const errors = data.errors || {}
+                      const errorMessages = []
+                      if (errors.phone_number) errorMessages.push(...errors.phone_number)
+                      if (errors.password) errorMessages.push(...errors.password)
+                      if (errors.confirm_password) errorMessages.push(...errors.confirm_password)
+                      if (errors.full_name) errorMessages.push(...errors.full_name)
+                      if (errorMessages.length === 0) errorMessages.push('Signup failed. Please try again.')
+                      setSignupError(errorMessages.join(' '))
+                    }
+                  } catch (error) {
+                    setSignupError('Network error. Please check your connection and try again.')
+                  }
                 }}>
                   {/* Full name input with floating label using peer */}
                   <div className="relative">
@@ -106,11 +139,7 @@ function Login() {
                     <input placeholder="Phone Number" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="tel" id="phone" value={phone} onChange={e => setPhone(e.target.value)} />
                   </div>
 
-                  {/* Email input */}
-                  <div className="relative">
-                    <label htmlFor="signupEmail" className="sr-only">Email address</label>
-                    <input placeholder="Email address" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="email" id="signupEmail" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} />
-                  </div>
+
 
                   {/* Password input */}
                   <div className="relative">
@@ -159,28 +188,49 @@ function Login() {
                   </button>
                 </form>
               ) : (
-                // SIGNIN FORM (single identifier: email or phone)
-                <form className="flex flex-col gap-4" action="" onSubmit={(e)=>{
+                // SIGNIN FORM (phone number only)
+                <form className="flex flex-col gap-4" action="" onSubmit={async (e)=>{
                   e.preventDefault()
                   setSigninError('')
-                  const id = signinIdentifier.trim()
+                  const phone = signinIdentifier.trim()
                   const pw = signinPassword
-                  if (!id) { setSigninError('Please enter your email or phone number.'); return }
+                  if (!phone) { setSigninError('Please enter your phone number.'); return }
                   if (!pw) { setSigninError('Please enter your password.'); return }
-                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                  if (id.includes('@')) {
-                    if (!emailRegex.test(id)) { setSigninError('Please enter a valid email address.'); return }
-                  } else {
-                    const digits = id.replace(/\D/g, '')
-                    if (digits.length < 6) { setSigninError('Please enter a valid phone number.'); return }
+                  // Basic phone validation
+                  const digits = phone.replace(/\D/g, '')
+                  if (digits.length < 6) { setSigninError('Please enter a valid phone number.'); return }
+                  // Call signin API
+                  try {
+                    const response = await fetch('/api/v1/auth/login/', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        phone_number: phone,
+                        password: pw,
+                      }),
+                    })
+                    const data = await response.json()
+                    if (data.success) {
+                      // Store tokens
+                      localStorage.setItem('access_token', data.tokens.access)
+                      localStorage.setItem('refresh_token', data.tokens.refresh)
+                      localStorage.setItem('user', JSON.stringify(data.data))
+                      // Handle success
+                      alert('Sign in successful!')
+                      window.location.href = '/'
+                    } else {
+                      setSigninError(data.error || 'Sign in failed. Please try again.')
+                    }
+                  } catch (error) {
+                    setSigninError('Network error. Please check your connection and try again.')
                   }
-                  // TODO: call signin API
-                  alert('Sign in submitted (UI only)')
                 }}>
-                  {/* Email or Phone input */}
+                  {/* Phone input */}
                   <div className="relative">
-                    <label htmlFor="signinIdentifier" className="sr-only">Email or Phone</label>
-                    <input placeholder="Email or Phone" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="text" id="signinIdentifier" value={signinIdentifier} onChange={e => setSigninIdentifier(e.target.value)} />
+                    <label htmlFor="signinIdentifier" className="sr-only">Phone Number</label>
+                    <input placeholder="Phone Number" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="tel" id="signinIdentifier" value={signinIdentifier} onChange={e => setSigninIdentifier(e.target.value)} />
                   </div>
 
                   {/* Password input */}
