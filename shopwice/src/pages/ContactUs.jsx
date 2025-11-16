@@ -84,14 +84,14 @@ function ContactUs() {
           {/* Right column: contact information and business hours boxes */}
           <div className="space-y-4">
             {/* Contact information box */}
-            <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-lg flex flex-col items-center p-4 border border-gray-100 shadow-sm">
               <h3 className="text-sm font-semibold mb-2">CONTACT INFORMATION</h3>
               <div className="text-sm text-gray-600 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 flex items-center justify-center rounded bg-red-50 text-red-600">📞</div>
                   <div>
                     <div className="text-xs text-gray-500">Phone</div>
-                    <div className="text-sm text-gray-800"><a href="tel:+233555123456">+233 555 123 456</a></div>
+                    <div className="text-sm text-gray-800"><a href="tel:0572636517">0572636517</a></div>
                   </div>
                 </div>
 
@@ -99,7 +99,7 @@ function ContactUs() {
                   <div className="w-9 h-9 flex items-center justify-center rounded bg-red-50 text-red-600">📍</div>
                   <div>
                     <div className="text-xs text-gray-500">Address</div>
-                    <div className="text-sm text-gray-800">123 Market Street, Accra</div>
+                    <div className="text-sm text-gray-800">25 Ayikushie Street, Adabraka</div>
                   </div>
                 </div>
 
@@ -107,7 +107,7 @@ function ContactUs() {
                   <div className="w-9 h-9 flex items-center justify-center rounded bg-red-50 text-red-600">✉️</div>
                   <div>
                     <div className="text-xs text-gray-500">Email</div>
-                    <div className="text-sm text-gray-800"><a href="mailto:support@shopwice.example">support@shopwice.example</a></div>
+                    <div className="text-sm text-gray-800"><a href="mailto:info@shopwice.com"> info@shopwice.com</a></div>
                   </div>
                 </div>
               </div>
@@ -115,19 +115,11 @@ function ContactUs() {
 
             {/* Business hours box */}
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
-              <h3 className="text-sm font-semibold mb-3">BUSINESS HOURS</h3>
-              <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
-                <div>
-                  <div className="font-medium">MON - FRI</div>
-                  <div>9:00 am - 6:00 pm</div>
-                </div>
-                <div>
-                  <div className="font-medium">SAT</div>
-                  <div>9:00 am - 6:00 pm</div>
-                </div>
-                <div>
-                  <div className="font-medium">SUN</div>
-                  <div>9:00 am - 5:00 pm</div>
+              <h3 className="text-sm font-semibold mb-3 text-center">BUSINESS HOURS</h3>
+              <div className="grid grid-cols-1 gap-4 text-sm text-gray-600">
+                <div className="flex flex-col items-center justify-between">
+                  <div className="font-medium">MON - SAT</div>
+                  <div>8:00 am - 5:00 pm</div>
                 </div>
               </div>
             </div>
