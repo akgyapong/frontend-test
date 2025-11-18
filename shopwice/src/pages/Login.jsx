@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../assets/arrow-left.svg'
@@ -10,6 +11,7 @@ function Login() {
   // Signup controlled fields and errors
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
   const [signupPassword, setSignupPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signupError, setSignupError] = useState('')
@@ -85,6 +87,8 @@ function Login() {
                   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                   if (!fullName.trim()) { setSignupError('Please enter your full name.'); return }
                   if (!phone.trim()) { setSignupError('Please enter your phone number.'); return }
+                  if (!email.trim()) { setSignupError('Please enter your email address.'); return }
+                  if (!emailRegex.test(email)) { setSignupError('Please enter a valid email address.'); return }
 
                   if (!signupPassword) { setSignupError('Please enter a password.'); return }
                   if (signupPassword !== confirmPassword) { setSignupError('Passwords do not match.'); return }
@@ -99,6 +103,7 @@ function Login() {
                       body: JSON.stringify({
                         full_name: fullName.trim(),
                         phone_number: phone.trim(),
+                        email: email.trim(),
                         password: signupPassword,
                         confirm_password: confirmPassword,
                       }),
@@ -117,6 +122,7 @@ function Login() {
                       const errors = data.errors || {}
                       const errorMessages = []
                       if (errors.phone_number) errorMessages.push(...errors.phone_number)
+                      if (errors.email) errorMessages.push(...errors.email)
                       if (errors.password) errorMessages.push(...errors.password)
                       if (errors.confirm_password) errorMessages.push(...errors.confirm_password)
                       if (errors.full_name) errorMessages.push(...errors.full_name)
@@ -137,6 +143,12 @@ function Login() {
                   <div className="relative">
                     <label htmlFor="phone" className="sr-only">Phone Number</label>
                     <input placeholder="Phone Number" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="tel" id="phone" value={phone} onChange={e => setPhone(e.target.value)} />
+                  </div>
+
+                  {/* Email input */}
+                  <div className="relative">
+                    <label htmlFor="email" className="sr-only">Email address</label>
+                    <input placeholder="Email address" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
                   </div>
 
 
