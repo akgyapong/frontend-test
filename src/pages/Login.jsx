@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../assets/arrow-left.svg'
 import google from '../assets/Google Icon.svg'
-
+import {authService } from '../services/authService.js'
+import {API_CONFIG } from '../config/api.js';
 
 function Login() {
   // Local state: controls whether the card shows signup or signin form
@@ -95,11 +96,9 @@ function Login() {
                   // Submit signup payload to API
                   setSignupError('')
                   try {
-                    const response = await fetch('/api/v1/auth/register/', {
+                    const response = await fetch(API_CONFIG.getFullURL(API_CONFIG.endpoints.auth.register), {
                       method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
+                      headers: API_CONFIG.getAuthHeaders(),
                       body: JSON.stringify({
                         full_name: fullName.trim(),
                         phone_number: phone.trim(),
@@ -213,11 +212,9 @@ function Login() {
                   if (digits.length < 6) { setSigninError('Please enter a valid phone number.'); return }
                   // Call signin API
                   try {
-                    const response = await fetch('/api/v1/auth/login/', {
+                    const response = await fetch(API_CONFIG.getFullURL(API_CONFIG.endpoints.auth.login), {
                       method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
+                      headers: API_CONFIG.getAuthHeaders(),
                       body: JSON.stringify({
                         phone_number: phone,
                         password: pw,
