@@ -5,31 +5,35 @@ import filter from '../assets/filter.png'
 import sortIcon from '../assets/arrow.png'
 import discount from '../assets/discount.png'
 import tag from '../assets/tag.png'
+import samsungA06 from '../assets/shopwice/samsung-a06.webp'
+import samsungTab from '../assets/shopwice/Samsung-Galaxy-Tab-S11-ultra.jpg'
+import nikeAF1 from '../assets/shopwice/Nike-Air-Force-1-Low-White.jpg'
+import nikeDunk from '../assets/shopwice/Nike-Dunk-Low-Retro-White-and-Black-Panda.png'
+import tcl75 from '../assets/shopwice/tcl-75-inches-smart-tv-new.webp'
+import westpointRice from '../assets/shopwice/Westpoint-WRCG-1817.B-Rice-Cooker.jpg'
+import westpointFan from '../assets/shopwice/Westpoint-56inches-Ceiling-Fan-WCFUS-23111-jpg.avif'
+import delronFridge from '../assets/shopwice/Delron-115-Litres-Display-Showcase-Fridge.webp'
+import aventos from '../assets/shopwice/aventos-jpg.webp'
+import avon from '../assets/shopwice/Avon-Far-Away-Rebel-Duo-Eau-de-Parfum-50ml-Body-Lotion-125ml-Notes-of-Chocolate-Toffee-and-Vanilla.jpg'
+import hanslet from '../assets/shopwice/hanslet-tetd-lace-up-dervy-shoe.jpg'
+import samsungZFlip from '../assets/shopwice/samsung-galaxy-z-flip-7_result-768x768.png'
+
 
 const ProductListing = () => {
   // Product catalog
   const products = [
-    { id: 1, name: "Wireless Earbuds", price: 49.99, image: "/img/earbuds.jpg", category: "Electronics", subcategory: "Mobile Accessories", rating: 4.5, brand: "SoundMax", inStock: true },
-    { id: 2, name: "Smartwatch Pro", price: 129.99, image: "/img/smartwatch.jpg", category: "Electronics", subcategory: "Mobile Accessories", rating: 4.3, brand: "TechWear", inStock: true },
-    { id: 3, name: "Gaming Mouse", price: 29.99, image: "/img/mouse.jpg", category: "Computers & Accessories", subcategory: "Keyboards & Mice", rating: 4.7, brand: "GamePro", inStock: false },
-    { id: 4, name: "Mechanical Keyboard", price: 79.99, image: "/img/keyboard.jpg", category: "Computers & Accessories", subcategory: "Keyboards & Mice", rating: 4.6, brand: "ClickMaster", inStock: true },
-    { id: 5, name: "4K Monitor", price: 299.99, image: "/img/monitor.jpg", category: "Computers & Accessories", subcategory: "Monitors", rating: 4.4, brand: "ViewPlus", inStock: true },
-    { id: 6, name: "Office Chair", price: 149.99, image: "/img/chair.jpg", category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.2, brand: "ComfortSeat", inStock: true },
-    { id: 7, name: "Bluetooth Speaker", price: 39.99, image: "/img/speaker.jpg", category: "Electronics", subcategory: "Audio", rating: 4.1, brand: "SoundMax", inStock: true },
-    { id: 8, name: "Laptop Stand", price: 24.99, image: "/img/stand.jpg", category: "Computers & Accessories", subcategory: "Laptop Bags & Accessories", rating: 4.8, brand: "ErgoTech", inStock: false },
-    { id: 9, name: "Portable SSD 1TB", price: 119.99, image: "/img/ssd.jpg", category: "Computers & Accessories", subcategory: "Storage Devices", rating: 4.9, brand: "FastDrive", inStock: true },
-    { id: 10, name: "Backpack Pro", price: 59.99, image: "/img/backpack.jpg", category: "Computers & Accessories", subcategory: "Laptop Bags & Accessories", rating: 4.3, brand: "TravelGear", inStock: true },
-    { id: 11, name: "Running Shoes", price: 89.99, image: "/img/shoes.jpg", category: "Fashion", subcategory: "Footwear", rating: 4.5, brand: "RunFast", inStock: true },
-    { id: 12, name: "Fitness Band", price: 34.99, image: "/img/band.jpg", category: "Electronics", subcategory: "Mobile Accessories", rating: 4.0, brand: "FitLife", inStock: true },
-    { id: 13, name: "LED Desk Lamp", price: 19.99, image: "/img/lamp.jpg", category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.6, brand: "BrightHome", inStock: true },
-    { id: 14, name: "Wireless Charger", price: 14.99, image: "/img/charger.jpg", category: "Electronics", subcategory: "Mobile Accessories", rating: 4.2, brand: "PowerUp", inStock: false },
-    { id: 15, name: "Coffee Maker", price: 69.99, image: "/img/coffeemaker.jpg", category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.7, brand: "BrewMaster", inStock: true },
-    { id: 16, name: "Air Fryer", price: 99.99, image: "/img/airfryer.jpg", category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.4, brand: "CookEasy", inStock: true },
-    { id: 17, name: "Electric Kettle", price: 24.99, image: "/img/kettle.jpg", category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.3, brand: "QuickBoil", inStock: true },
-    { id: 18, name: "Water Bottle Steel", price: 12.99, image: "/img/bottle.jpg", category: "Computers & Accessories", subcategory: "Laptop Bags & Accessories", rating: 4.8, brand: "HydroFlask", inStock: true },
-    { id: 19, name: "Sunglasses Classic", price: 22.99, image: "/img/sunglasses.jpg", category: "Fashion", subcategory: "Accessories", rating: 4.1, brand: "SunStyle", inStock: true },
-    { id: 20, name: "Graphic T-Shirt", price: 15.99, image: "/img/tshirt.jpg", category: "Fashion", subcategory: "Clothing", rating: 4.2, brand: "UrbanWear", inStock: false },
-    { id: 21, name: "Wireless Headphones", price: 89.99, image: "/img/headphones.jpg", category: "Electronics", subcategory: "Audio", rating: 4.7, brand: "SoundMax", inStock: true },
+    { id: 1, name: "Samsung Galaxy A06 Dual SIM 6GB RAM 128GB ROM with 5000mAh Battery Capacity", price: 'GHS 1,790.00', image: samsungA06, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.5, brand: "Samsung", inStock: true },
+    { id: 2, name: "Samsung Galaxy Tab S11 Ultra 5G 12GB 256GB Ai Tablet 14.6 inches", price: 'GHS 18,900.00', image: samsungTab, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Samsung", inStock: true },
+    { id: 3, name: "Nike Air Force 1 Low White", price: 'GHS 2,760.00', image: nikeAF1, category: "Fashion", subcategory: "Footwear", rating: 4.7, brand: "Nike", inStock: false },
+    { id: 4, name: "Nike SB Dunk Low Retro White and Black Panda", price: 'GHS 2,179.99', image: nikeDunk, category: "Fashion", subcategory: "Footwear", rating: 4.6, brand: "Nike", inStock: true },
+    { id: 5, name: "TCL 75P755 LED UHD 4K 75″ Smart Android Television", price: 'GHS 17,999.99', image: tcl75, category: "Electronics", subcategory: "Televisions", rating: 4.4, brand: "Tlc", inStock: true },
+    { id: 6, name: "Westpoint WRCG-1817.B Rice Cooker", price: 'GHS 509.99', image: westpointRice, category: "Home & Kitchen", subcategory: "Cookers & Ovens", rating: 4.2, brand: "Westpoint", inStock: true },
+    { id: 7, name: "Westpoint 56″ Ceiling Fan WCFUS-2311", price: 'GHS 309.99', image: westpointFan, category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.1, brand: "Westpoint", inStock: true },
+    { id: 8, name: "Delron 115 Litres – Display Showcase Fridge", price: 'GHS 24.99', image: delronFridge, category: "Home & Kitchen", subcategory: "Refrigerators", rating: 4.8, brand: "Delron", inStock: false },
+    { id: 9, name: "AVENTOS PERFUME FOR MEN", price: 'GHS 119.99', image: aventos, category: "Fashion", subcategory: "Accessories", rating: 4.9, brand: "Aventos", inStock: true },
+    { id: 10, name: "Avon Far Away Rebel Set of 50ML and 125ML Body Lotion", price: 'GHS 59.99', image: avon, category: "Fashion", subcategory: "Accessories", rating: 4.3, brand: "Avon", inStock: true },
+    { id: 11, name: "Hanslet Tetd Brogue Derby Shoe", price: 'GHS 289.99', image: hanslet, category: "Fashion", subcategory: "Footwear", rating: 4.3, brand: "Hanslet", inStock: true },
+    { id: 12, name: "Samsung Galaxy Z Flip 7 12GB RAM 256GB ROM 6.9 inches Super AMOLED Screen Display", price: 'GHS 18,159.99', image: samsungZFlip, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Samsung", inStock: true }
   ];
 
   // Category structure
@@ -43,6 +47,7 @@ const ProductListing = () => {
         'Power Banks',
         'Memory Cards',
         'Chargers & Cables',
+        'Televisions',
       ]
     },
     {
@@ -75,8 +80,28 @@ const ProductListing = () => {
     }
   ]
 
-  // Brands extracted from products
-  const brands = [...new Set(products.map(product => product.brand))].sort();
+  // Normalize prices and extract brands
+  const normalizedProducts = useMemo(() => {
+    return products.map(product => {
+      const priceNum = typeof product.price === 'string'
+        ? parseFloat(product.price.replace(/[^0-9.-]+/g, ''))
+        : Number(product.price || 0)
+
+      return {
+        ...product,
+        priceNum: Number.isFinite(priceNum) ? priceNum : 0
+      }
+    })
+  }, [products])
+
+  // Format numbers with comma separators and two decimals
+  const formatCurrency = (value) => {
+    const num = Number(value)
+    if (!Number.isFinite(num)) return value
+    return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  }
+
+  const brands = [...new Set(normalizedProducts.map(product => product.brand))].sort();
 
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedSubcategory, setSelectedSubcategory] = useState(null)
@@ -132,7 +157,7 @@ const ProductListing = () => {
 
   // Sort products based on selected option
   const sortedAndFilteredProducts = useMemo(() => {
-    let filtered = products.filter(p => {
+    let filtered = normalizedProducts.filter(p => {
       // Category/Subcategory filtering
       const categoryMatch = !selectedCategory || p.category === selectedCategory
       const subcategoryMatch = !selectedSubcategory || p.subcategory === selectedSubcategory || p.subcategory === selectedSubcategory.replace(/ & /g, ' & ')
@@ -140,7 +165,7 @@ const ProductListing = () => {
       // Price filtering
       const minPrice = priceRange.min ? parseFloat(priceRange.min) : 0
       const maxPrice = priceRange.max ? parseFloat(priceRange.max) : Infinity
-      const priceMatch = p.price >= minPrice && p.price <= maxPrice
+      const priceMatch = p.priceNum >= minPrice && p.priceNum <= maxPrice
       
       // Brand filtering
       const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(p.brand)
@@ -164,7 +189,7 @@ const ProductListing = () => {
         break
       case 'best-selling':
         // Simulate best selling by rating/price (you can replace with actual sales data)
-        filtered.sort((a, b) => (b.price / 10 + b.rating) - (a.price / 10 + a.rating))
+        filtered.sort((a, b) => (b.priceNum / 10 + b.rating) - (a.priceNum / 10 + a.rating))
         break
       case 'newest':
         // Newest first (higher IDs are newer)
@@ -177,10 +202,10 @@ const ProductListing = () => {
         filtered.sort((a, b) => b.name.localeCompare(a.name))
         break
       case 'price-low-high':
-        filtered.sort((a, b) => a.price - b.price)
+        filtered.sort((a, b) => a.priceNum - b.priceNum)
         break
       case 'price-high-low':
-        filtered.sort((a, b) => b.price - a.price)
+        filtered.sort((a, b) => b.priceNum - a.priceNum)
         break
       case 'rating-high-low':
         filtered.sort((a, b) => b.rating - a.rating)
@@ -193,7 +218,7 @@ const ProductListing = () => {
     }
 
     return filtered
-  }, [selectedCategory, selectedSubcategory, priceRange, sortOption, selectedBrands, ratingFilter, availabilityFilter])
+  }, [normalizedProducts, selectedCategory, selectedSubcategory, priceRange, sortOption, selectedBrands, ratingFilter, availabilityFilter])
 
   const handlePriceApply = () => {
     const minInput = document.getElementById('price-min')
@@ -653,7 +678,7 @@ const ProductListing = () => {
               )}
               {(priceRange.min || priceRange.max) && (
                 <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm flex items-center gap-1">
-                  ${priceRange.min || 0} - ${priceRange.max || '∞'}
+                  {`GHS ${priceRange.min ? formatCurrency(priceRange.min) : '0.00'} - GHS ${priceRange.max ? formatCurrency(priceRange.max) : '∞'}`}
                   <button onClick={() => setPriceRange({ min: '', max: '' })} className="hover:text-orange-900">×</button>
                 </span>
               )}
@@ -664,7 +689,7 @@ const ProductListing = () => {
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Sidebar */}
-          <aside className="w-full lg:w-64 bg-white rounded-2xl shadow-md p-6 border border-gray-200 h-fit sticky top-4">
+          <aside className="w-full lg:w-64 bg-white rounded-2xl shadow-md p-6 border border-gray-200 h-fit lg:sticky lg:top-4">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-bold text-lg text-gray-800">Categories</h4>
               {(selectedCategory || selectedSubcategory) && (
@@ -737,7 +762,7 @@ const ProductListing = () => {
                   {selectedSubcategory && ` / ${selectedSubcategory}`}
                 </h3>
                 <p className="text-gray-600 text-sm mt-1">
-                  Showing {sortedAndFilteredProducts.length} of {products.length} products
+                  Showing {sortedAndFilteredProducts.length} of {normalizedProducts.length} products
                   {sortOption !== 'featured' && ` • Sorted by ${sortOption.replace('-', ' ')}`}
                 </p>
               </div>
@@ -770,14 +795,14 @@ const ProductListing = () => {
                     key={product.id} 
                     className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-orange-300 overflow-hidden group"
                   >
-                    <div className="p-4 flex flex-col items-center">
+                    <div className="p-4 flex flex-col items-center md:items-start">
                       <div className="relative">
-                        <div className="w-40 h-40 mb-4 flex items-center justify-center bg-gray-50 rounded-xl p-4 group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-full h-48 sm:h-56 mb-4 flex items-center justify-center bg-gray-50 rounded-xl p-4 group-hover:scale-105 transition-transform duration-300">
                           <img 
-                            src={product.image} 
+                            src={product.image || 'https://via.placeholder.com/320x240?text=No+Image'} 
                             alt={product.name} 
-                            className="max-w-full max-h-full object-contain" 
-                            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/160x160?text=No+Image' }} 
+                            className="w-full h-full object-contain" 
+                            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/320x240?text=No+Image' }} 
                           />
                         </div>
                         {!product.inStock && (
@@ -787,7 +812,7 @@ const ProductListing = () => {
                         )}
                       </div>
                       
-                      <h3 className="text-base font-semibold text-gray-800 text-center mb-2 line-clamp-2 h-12 flex items-center justify-center">
+                      <h3 className="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left mb-1 line-clamp-2 leading-tight min-h-[3.25rem] break-words">
                         {product.name}
                       </h3>
                       
@@ -797,7 +822,7 @@ const ProductListing = () => {
                       </div>
                       
                       <div className="flex items-center justify-between w-full mt-2">
-                        <div className="text-gray-800 font-bold text-lg">${product.price.toFixed(2)}</div>
+                        <div className="text-gray-800 font-bold text-lg">{`GHS ${formatCurrency(product.priceNum)}`}</div>
                         <button 
                           className={`p-2 rounded-full transition-colors duration-200 shadow-md hover:shadow-lg ${
                             product.inStock 
