@@ -16,7 +16,7 @@ function Footer() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl">Customer Service</h1>
-          <Link to="/" className="hover:underline">Terms</Link>
+          <Link to="/terms" className="hover:underline">Terms</Link>
           <Link to="/" className="hover:underline">Privacy</Link>
           <Link to="/" className="hover:underline">Support</Link>
           <Link to="/" className="hover:underline">Payment</Link>

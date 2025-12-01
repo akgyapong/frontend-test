@@ -13,6 +13,7 @@ import ProductListing from './pages/ProductListing.jsx'
 import Cart from './pages/Cart.jsx'
 import ForgotPassword from './pages/ForgetPassword.jsx'
 import ResetInstructions from './pages/ResetInstructions.jsx'
+import Terms from './pages/Terms.jsx'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-instructions" element={<ResetInstructions />} />
+      <Route path="/terms" element={<Terms />} />
     </Routes>
   )
 }
