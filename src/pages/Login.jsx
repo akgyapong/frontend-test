@@ -1,18 +1,18 @@
-
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../assets/arrow-left.svg'
 import google from '../assets/Google Icon.svg'
-import {authService } from '../services/authService.js'
-import {API_CONFIG } from '../config/api.js';
+import { authService } from '../services/authService.js'
+import { API_CONFIG } from '../config/api.js';
+
 
 function Login() {
   // Local state: controls whether the card shows signup or signin form
   const [mode, setMode] = useState('signup') // 'signup' | 'signin'
   // Signup controlled fields and errors
   const [fullName, setFullName] = useState('')
-  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [signupPassword, setSignupPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signupError, setSignupError] = useState('')
@@ -87,27 +87,43 @@ function Login() {
                   setSignupError('')
                   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                   if (!fullName.trim()) { setSignupError('Please enter your full name.'); return }
-                  if (!phone.trim()) { setSignupError('Please enter your phone number.'); return }
                   if (!email.trim()) { setSignupError('Please enter your email address.'); return }
-                  if (!emailRegex.test(email)) { setSignupError('Please enter a valid email address.'); return }
-
+                  if (!emailRegex.test(email.trim())) { setSignupError('Please enter a valid email address.'); return }
+                  if (!phone.trim()) { setSignupError('Please enter your phone number.'); return }
                   if (!signupPassword) { setSignupError('Please enter a password.'); return }
                   if (signupPassword !== confirmPassword) { setSignupError('Passwords do not match.'); return }
                   // Submit signup payload to API
                   setSignupError('')
+                  
+                  console.log('Signup payload:', {
+                    full_name: fullName.trim(),
+                    email: email.trim(),
+                    phone_number: phone.trim(),
+                    password: signupPassword,
+                    confirm_password: confirmPassword,
+                  });
+                  
                   try {
                     const response = await fetch(API_CONFIG.getFullURL(API_CONFIG.endpoints.auth.register), {
                       method: 'POST',
-                      headers: API_CONFIG.getAuthHeaders(),
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
                       body: JSON.stringify({
                         full_name: fullName.trim(),
-                        phone_number: phone.trim(),
                         email: email.trim(),
+                        phone_number: phone.trim(),
                         password: signupPassword,
                         confirm_password: confirmPassword,
                       }),
                     })
+                    
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+                    
                     const data = await response.json()
+                    console.log('Response data:', data);
+                    
                     if (data.success) {
                       // Store tokens
                       localStorage.setItem('access_token', data.tokens.access)
@@ -117,19 +133,29 @@ function Login() {
                       alert('Signup successful! Welcome to Shopwice.')
                       window.location.href = '/'
                     } else {
-                      // Handle errors
+                      // Handle errors with detailed logging
+                      console.error('Signup failed:', data);
                       const errors = data.errors || {}
                       const errorMessages = []
-                      if (errors.phone_number) errorMessages.push(...errors.phone_number)
-                      if (errors.email) errorMessages.push(...errors.email)
-                      if (errors.password) errorMessages.push(...errors.password)
-                      if (errors.confirm_password) errorMessages.push(...errors.confirm_password)
-                      if (errors.full_name) errorMessages.push(...errors.full_name)
-                      if (errorMessages.length === 0) errorMessages.push('Signup failed. Please try again.')
-                      setSignupError(errorMessages.join(' '))
+                      
+                      // Check for specific field errors
+                      if (errors.phone_number) errorMessages.push(`Phone: ${errors.phone_number.join(', ')}`)
+                      if (errors.password) errorMessages.push(`Password: ${errors.password.join(', ')}`)
+                      if (errors.confirm_password) errorMessages.push(`Confirm Password: ${errors.confirm_password.join(', ')}`)
+                      if (errors.full_name) errorMessages.push(`Full Name: ${errors.full_name.join(', ')}`)
+                      if (errors.email) errorMessages.push(`Email: ${errors.email.join(', ')}`)
+                      if (errors.non_field_errors) errorMessages.push(`${errors.non_field_errors.join(', ')}`)
+                      
+                      // Show general error if no specific errors found
+                      if (errorMessages.length === 0) {
+                        errorMessages.push(data.message || 'Signup failed. Please try again.')
+                      }
+                      
+                      setSignupError(errorMessages.join(' | '))
                     }
                   } catch (error) {
-                    setSignupError('Network error. Please check your connection and try again.')
+                    console.error('Network error:', error);
+                    setSignupError(`Network error: ${error.message}. Please check your connection and try again.`)
                   }
                 }}>
                   {/* Full name input with floating label using peer */}
@@ -138,16 +164,16 @@ function Login() {
                     <input placeholder="Full Name" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="text" id="fullname" value={fullName} onChange={e => setFullName(e.target.value)} />
                   </div>
 
+                  {/* Email input */}
+                  <div className="relative">
+                    <label htmlFor="email" className="sr-only">Email Address</label>
+                    <input placeholder="Email Address" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
+                  </div>
+
                   {/* Phone input */}
                   <div className="relative">
                     <label htmlFor="phone" className="sr-only">Phone Number</label>
                     <input placeholder="Phone Number" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="tel" id="phone" value={phone} onChange={e => setPhone(e.target.value)} />
-                  </div>
-
-                  {/* Email input */}
-                  <div className="relative">
-                    <label htmlFor="email" className="sr-only">Email address</label>
-                    <input placeholder="Email address" className="block w-full border border-gray-300 rounded-2xl h-12 px-4 py-3 focus:outline-none focus:border-sky-600" type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
                   </div>
 
 
@@ -214,7 +240,9 @@ function Login() {
                   try {
                     const response = await fetch(API_CONFIG.getFullURL(API_CONFIG.endpoints.auth.login), {
                       method: 'POST',
-                      headers: API_CONFIG.getAuthHeaders(),
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
                       body: JSON.stringify({
                         phone_number: phone,
                         password: pw,
