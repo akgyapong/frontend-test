@@ -17,7 +17,24 @@ import aventos from '../assets/shopwice/aventos-jpg.webp'
 import avon from '../assets/shopwice/Avon-Far-Away-Rebel-Duo-Eau-de-Parfum-50ml-Body-Lotion-125ml-Notes-of-Chocolate-Toffee-and-Vanilla.jpg'
 import hanslet from '../assets/shopwice/hanslet-tetd-lace-up-dervy-shoe.jpg'
 import samsungZFlip from '../assets/shopwice/samsung-galaxy-z-flip-7_result-768x768.png'
-
+import itel2163 from '../assets/shopwice/Itel-2163-Dual-Sim-With-Wireless-FM-Radio.jpg'
+import itelA80 from '../assets/shopwice/itel-A80-white.png'
+import playstation5 from '../assets/shopwice/playstation-5-console-digital-edition-slim-1tb-with-1-controller.webp'
+import sonysoundbar from '../assets/shopwice/Sony-soundbar-ht-s100f.jpg'
+import jblspeaker from '../assets/shopwice/JBL-Charge-5-Bluetooth-Speaker-2.jpg'
+import nikelegend from '../assets/shopwice/Nike-Legend-Essential-2-1_result-768x768.png'
+import nikeairmax from '../assets/shopwice/Nike-Air-Max-Infinity-2-Hasta-Athletic-Running-Shoes-5.webp'
+import nikeSBDunk from '../assets/shopwice/Nike-Dunk-Low-Retro-Concord-sneaker-768x768.png'
+import macbook2020 from '../assets/shopwice/Apple-2020-MacBook-Air-M1-13-inches-8GB-RAM-256GB-512GB-SSD-Storage-768x768.jpeg'
+import iphone17 from '../assets/shopwice/Apple-iPhone-17-Pro-Max-Orange-front-and-back-for-Shopwice-Ghana-768x768.avif'
+import airpods4 from '../assets/shopwice/Airpods-4_result.png'
+import binatoneblender from '../assets/shopwice/1-68-1-680x680.jpg'
+import binatoneiron from '../assets/shopwice/Binatone-Electric-Heavy-Steam-Iron-2200W.jpg'
+import metaquest from '../assets/shopwice/Meta-Quest-2-—-Advanced-All-In-One-Virtual-Reality-Headset-b_result-768x768.png'
+import mk1 from '../assets/shopwice/Mortal-Kombat-1-ps5_result.png'
+import ps5pad from '../assets/shopwice/Sony-PS5-Dual-Sense-wireless-controller-white-768x772.webp'
+import hpspectre from '../assets/shopwice/HP-Spectre-x360-2-in-1-Laptop-14-ef2023dx-7H4F0UA-768x768.png'
+import samsungconditioner from '../assets/shopwice/Samsung-2.0HP-R410a-WindFree-Inverter-Air-Conditioner-768x768.webp'
 
 const ProductListing = () => {
   // Product catalog
@@ -33,7 +50,25 @@ const ProductListing = () => {
     { id: 9, name: "AVENTOS PERFUME FOR MEN", price: 'GHS 119.99', image: aventos, category: "Fashion", subcategory: "Accessories", rating: 4.9, brand: "Aventos", inStock: true },
     { id: 10, name: "Avon Far Away Rebel Set of 50ML and 125ML Body Lotion", price: 'GHS 59.99', image: avon, category: "Fashion", subcategory: "Accessories", rating: 4.3, brand: "Avon", inStock: true },
     { id: 11, name: "Hanslet Tetd Brogue Derby Shoe", price: 'GHS 289.99', image: hanslet, category: "Fashion", subcategory: "Footwear", rating: 4.3, brand: "Hanslet", inStock: true },
-    { id: 12, name: "Samsung Galaxy Z Flip 7 12GB RAM 256GB ROM 6.9 inches Super AMOLED Screen Display", price: 'GHS 18,159.99', image: samsungZFlip, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Samsung", inStock: true }
+    { id: 12, name: "Samsung Galaxy Z Flip 7 12GB RAM 256GB ROM 6.9 inches Super AMOLED Screen Display", price: 'GHS 18,159.99', image: samsungZFlip, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Samsung", inStock: true },
+    { id: 13, name: "Itel 2163 Dual Sim With Wireless and FM Radio", price: 'GHS 159.99', image: itel2163, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Itel", inStock: true },
+    { id: 14, name: "Itel A80 3GB(+ 5GB Extended) RAM", price: 'GHS 1,159.99', image: itelA80, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Itel", inStock: true },
+    { id: 15, name: "Playstation 5 Console Digital Edition Slim 1TB ", price: 'GHS 7,159.99', image: playstation5, category: "Electronics", subcategory: "Consoles & Games", rating: 4.3, brand: "Playstation", inStock: true },
+    { id: 16, name: "Sony Soundbar HT S100F", price: 'GHS 2,159.99', image: sonysoundbar, category: "Electronics", subcategory: "Audio", rating: 4.3, brand: "Sony", inStock: true },
+    { id: 17, name: "JBL Charge 5 Bluetooth Speaker", price: 'GHS 1,159.99', image: jblspeaker, category: "Electronics", subcategory: "Audio", rating: 4.3, brand: "JBL", inStock: true },
+    { id: 18, name: "Nike Legend Black University Red Essential 2 Training Sneaker", price: 'GHS 1,259.99', image: nikelegend, category: "Fashion", subcategory: "Footwear", rating: 4.3, brand: "Nike", inStock: true },
+    { id: 19, name: "Nike Air Max Infinity 2 Hasta Athletic Running Sneaker", price: 'GHS 2,159.99', image: nikeairmax, category: "Fashion", subcategory: "Footwear", rating: 4.3, brand: "Nike", inStock: true },
+    { id: 20, name: "Nike SB Dunk Low Retro Concord Sneaker", price: 'GHS 2,759.99', image: nikeSBDunk, category: "Fashion", subcategory: "Footwear", rating: 4.3, brand: "Nike", inStock: true },
+    { id: 21, name: "Apple 2020 MacBook Air M1 13 inches 8GB RAM, 256GB 512GB SSD Storage", price: 'GHS 13,159.99 - GHS 16, 500.00', image: macbook2020, category: "Computers & Accessories", subcategory: "Laptops", rating: 4.3, brand: "Apple", inStock: true },
+    { id: 22, name: "Apple iPhone 17 Pro Max e-SIM Factory Unlocked 12GB 256GB 5G, 6.9 inches with iOS 26 A19 Pro Chipset 6 Core GPUr", price: 'GHS 27,159.99', image: iphone17, category: "Electronics", subcategory: "Mobile Phones & Tablets", rating: 4.3, brand: "Apple", inStock: true },
+    { id: 23, name: "Apple AirPods 4 Active Noise Cancellation", price: 'GHS 4,159.99', image: airpods4, category: "Electronics", subcategory: "Audio", rating: 4.3, brand: "Apple", inStock: true },
+    { id: 24, name: "Binatone BLG - 605SS Blender", price: 'GHS 1,159.99', image: binatoneblender, category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.3, brand: "Binatone", inStock: true },
+    { id: 25, name: "Binatone Electric Heavy Steam Iron 2200W", price: 'GHS 1,159.99', image: binatoneiron, category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.3, brand: "Binatone", inStock: true },
+    { id: 26, name: "Meta Quest 2 256GB", price: 'GHS 1,159.99', image: metaquest, category: "Electronics", subcategory: "Consoles & Games", rating: 4.3, brand: "Meta", inStock: true },
+    { id: 27, name: "Mortal Kombat 1 - PS5", price: 'GHS 1,159.99', image: mk1, category: "Electronics", subcategory: "Consoles & Games", rating: 4.3, brand: "Playstation", inStock: true },
+    { id: 28, name: "Sony PS5 Dual Sense wireless controller", price: 'GHS 1,159.99', image: ps5pad, category: "Electronics", subcategory: "Consoles & Gaming", rating: 4.3, brand: "Sony", inStock: true },
+    { id: 29, name: "HP Spectre X360 2-in-1 Laptop 14″ Core i7 16GB RAM 1TB SSD", price: 'GHS 24,159.99', image: hpspectre, category: "Computers & Accessories", subcategory: "Laptops", rating: 4.3, brand: "HP", inStock: true },
+    { id: 30, name: "Samsung 2.0HP R410a WindFree Inverter Air Conditioner", price: 'GHS 16,159.99', image: samsungconditioner, category: "Home & Kitchen", subcategory: "Home Appliances", rating: 4.3, brand: "Samsung", inStock: true }
   ];
 
   // Category structure
@@ -43,6 +78,7 @@ const ProductListing = () => {
       subs: [
         'Mobile Phones & Tablets',
         'Mobile Accessories',
+        'Consoles & Games',
         'Audio',
         'Power Banks',
         'Memory Cards',
@@ -795,7 +831,7 @@ const ProductListing = () => {
                     key={product.id} 
                     className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-orange-300 overflow-hidden group"
                   >
-                    <div className="p-4 flex flex-col items-center md:items-start">
+                    <div className="p-4 flex flex-col items-center">
                       <div className="relative">
                         <div className="w-full h-48 sm:h-56 mb-4 flex items-center justify-center bg-gray-50 rounded-xl p-4 group-hover:scale-105 transition-transform duration-300">
                           <img 
@@ -812,16 +848,16 @@ const ProductListing = () => {
                         )}
                       </div>
                       
-                      <h3 className="text-xs md:text-sm font-semibold text-gray-800 text-center md:text-left mb-1 line-clamp-2 leading-tight min-h-[3.25rem] break-words">
+                      <h3 className="text-xs md:text-sm font-semibold text-gray-800 text-center mb-1 line-clamp-2 leading-tight min-h-[3.25rem] break-words">
                         {product.name}
                       </h3>
                       
-                      <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
+                      <div className="flex items-center justify-center w-full gap-1 text-yellow-500 text-sm mb-2">
                         <span aria-hidden>★★★★☆</span>
                         <span className="text-gray-600 text-xs ml-1">{product.rating}</span>
                       </div>
                       
-                      <div className="flex items-center justify-between w-full mt-2">
+                      <div className="flex items-center justify-center w-full mt-2 gap-3">
                         <div className="text-gray-800 font-bold text-lg">{`GHS ${formatCurrency(product.priceNum)}`}</div>
                         <button 
                           className={`p-2 rounded-full transition-colors duration-200 shadow-md hover:shadow-lg ${
