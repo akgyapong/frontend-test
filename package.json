@@ -7,14 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "serve -s dist -l $PORT",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.4",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "serve": "^14.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
